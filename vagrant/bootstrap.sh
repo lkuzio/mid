@@ -14,6 +14,6 @@ sudo apt-get install -y oracle-java8-set-default\
 #kafka
 wget http://ftp.ps.pl/pub/apache/kafka/0.10.2.0/kafka_2.12-0.10.2.0.tgz
 tar -zxvf kafka_2.12-0.10.2.0.tgz
-#cd kafka_2.12-0.10.2.0
-#bin/zookeeper-server-start.sh config/zookeeper.properties&
-#bin/kafka-server-start.sh config/server.properties&
+cd kafka_2.12-0.10.2.0
+bin/zookeeper-server-start.sh config/zookeeper.properties&
+bin/kafka-server-start.sh config/server.properties&
