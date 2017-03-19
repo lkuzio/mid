@@ -2,6 +2,7 @@ package xyz.javista.event;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import kafka.common.FailedToSendMessageException;
 import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
@@ -16,7 +17,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * Created by Luke on 2017-03-05.
  */
 
-public class EventSender extends Thread{
+public class EventSender extends Thread {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EventSender.class);
 
@@ -32,7 +33,7 @@ public class EventSender extends Thread{
         ProducerConfig config = new ProducerConfig(props);
         producer = new Producer<String, String>(config);
         events = new ConcurrentLinkedQueue<InputChangedEvent>();
-       }
+    }
 
     public Queue<InputChangedEvent> getEvents() {
         return events;
@@ -44,16 +45,17 @@ public class EventSender extends Thread{
 
     @Override
     public void run() {
-        while(true) {
-            if(!events.isEmpty()) {
+        while (true) {
+            if (!events.isEmpty()) {
                 ObjectMapper objectMapper = new ObjectMapper();
                 KeyedMessage<String, String> data = null;
                 try {
                     data = new KeyedMessage<String, String>("device_event", UUID.randomUUID().toString(), objectMapper.writeValueAsString(events.poll()));
-                } catch (JsonProcessingException e) {
-                    LOGGER.error("Something wrong happend during serialization", e);
+                    producer.send(data);
+                    System.out.println(String.format("[%s],[%s]",data.key(), events.size()));
+                } catch (JsonProcessingException | FailedToSendMessageException e) {
+                    LOGGER.error("Something wrong happend", e);
                 }
-                producer.send(data);
             }
         }
     }

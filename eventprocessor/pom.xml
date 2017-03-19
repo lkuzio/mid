@@ -9,31 +9,27 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>devicemenager</artifactId>
+    <artifactId>eventprocessor</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>com.pi4j</groupId>
-            <artifactId>pi4j-core</artifactId>
+            <groupId>org.apache.storm</groupId>
+            <artifactId>storm-core</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
+            <groupId>org.apache.storm</groupId>
+            <artifactId>storm-kafka</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_2.11</artifactId>
         </dependency>
         <dependency>
-            <groupId>xyz.javista</groupId>
-            <artifactId>event</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>xyz.javista</groupId>
-            <artifactId>common</artifactId>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
         </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
@@ -46,7 +42,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>xyz.javista.devicemenager.Application</mainClass>
+                            <mainClass>xyz.javista.eventprocessor.DeviceEventTopology</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -77,6 +73,5 @@
             </extension>
         </extensions>
     </build>
-
 
 </project>
