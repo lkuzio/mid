@@ -13,6 +13,7 @@
         <module>event</module>
         <module>devicemenager</module>
         <module>eventprocessor</module>
+        <module>controlpanel</module>
     </modules>
 
 
@@ -79,6 +80,27 @@
                 <version>1.7.21</version>
                 <scope>compile</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-mongodb</artifactId>
+                <version>1.10.1.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>1.1.0.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-jdk8</artifactId>
+                <version>1.1.0.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>1.1.0.Final</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>

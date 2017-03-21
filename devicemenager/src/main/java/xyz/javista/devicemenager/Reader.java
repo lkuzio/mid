@@ -65,7 +65,7 @@ public class Reader extends Thread {
                         if (d1value.toCharArray()[i] != tmp.get(0).toCharArray()[i]) {
                             InputChangedEvent event = new InputChangedEvent();
                             event.setDeviceGPIO(Integer.toString(i));
-                            event.setDeviceInternalPort("A");
+                            event.setDeviceInternalPort(Integer.toString(DEVICE_PORTA_INPUT_REG));
                             event.setDevicePhysicalPort(Integer.toString(DEVICE_ADDRESS_1));
                             event.setValue(Integer.parseInt(Character.toString(d1value.toCharArray()[i])));
                             event.setTimeSinceLastUpdate(new Timestamp(100l));
