@@ -1,12 +1,15 @@
 package xyz.javista.controlpanel.core.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
-import xyz.javista.common.mongo.entity.Device;
+
+import org.springframework.data.repository.CrudRepository;
+import xyz.javista.controlpanel.core.entity.Device;
+
+import java.util.List;
 
 /**
- * Created by Luke on 2017-03-20.
+ * Created by Luke on 2017-03-22.
  */
-public interface DeviceRepository extends MongoRepository<Device, String> {
+public interface DeviceRepository extends CrudRepository<Device, Long> {
 
-    public Device findByDevicePhysicalPort(String deviceInternalPort);
+    List<Device> findAll();
 }

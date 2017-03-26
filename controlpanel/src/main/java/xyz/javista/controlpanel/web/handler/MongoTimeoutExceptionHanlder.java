@@ -1,0 +1,26 @@
+package xyz.javista.controlpanel.web.handler;
+
+import com.mongodb.MongoTimeoutException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+/**
+ * Created by Luke on 2017-03-25.
+ */
+@ControllerAdvice
+public class MongoTimeoutExceptionHanlder {
+
+
+    protected static final Logger LOGGER = LoggerFactory.getLogger(RuntimeExceptionHandler.class);
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(MongoTimeoutException.class)
+    public void handleMongoException(MongoTimeoutException ex) {
+        LOGGER.error("Mongo timeout:", ex);
+    }
+
+}

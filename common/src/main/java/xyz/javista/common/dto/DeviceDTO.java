@@ -1,14 +1,18 @@
 package xyz.javista.common.dto;
 
+
 /**
  * Created by Luke on 2017-03-21.
  */
+
 public class DeviceDTO {
 
     private String id;
     private String devicePhysicalPort;
     private String deviceInternalPort;
     private String deviceGPIO;
+    private String deviceName;
+    private Long roomId;
 
     public String getId() {
         return id;
@@ -40,5 +44,59 @@ public class DeviceDTO {
 
     public void setDeviceGPIO(String deviceGPIO) {
         this.deviceGPIO = deviceGPIO;
+    }
+
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
+    }
+
+    public Long getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DeviceDTO deviceDTO = (DeviceDTO) o;
+
+        if (id != null ? !id.equals(deviceDTO.id) : deviceDTO.id != null) return false;
+        if (!devicePhysicalPort.equals(deviceDTO.devicePhysicalPort)) return false;
+        if (!deviceInternalPort.equals(deviceDTO.deviceInternalPort)) return false;
+        if (!deviceGPIO.equals(deviceDTO.deviceGPIO)) return false;
+        if (deviceName != null ? !deviceName.equals(deviceDTO.deviceName) : deviceDTO.deviceName != null) return false;
+        return roomId != null ? roomId.equals(deviceDTO.roomId) : deviceDTO.roomId == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + devicePhysicalPort.hashCode();
+        result = 31 * result + deviceInternalPort.hashCode();
+        result = 31 * result + deviceGPIO.hashCode();
+        result = 31 * result + (deviceName != null ? deviceName.hashCode() : 0);
+        result = 31 * result + (roomId != null ? roomId.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "DeviceDTO{" +
+                "id='" + id + '\'' +
+                ", devicePhysicalPort='" + devicePhysicalPort + '\'' +
+                ", deviceInternalPort='" + deviceInternalPort + '\'' +
+                ", deviceGPIO='" + deviceGPIO + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", roomId=" + roomId +
+                '}';
     }
 }

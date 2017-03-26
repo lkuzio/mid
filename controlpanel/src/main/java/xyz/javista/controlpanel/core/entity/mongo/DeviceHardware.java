@@ -1,4 +1,4 @@
-package xyz.javista.common.mongo.entity;
+package xyz.javista.controlpanel.core.entity.mongo;
 
 
 import org.springframework.data.annotation.Id;
@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 /**
  * Created by Luke on 2017-03-20.
  */
-public class Device {
+public class DeviceHardware {
 
     @Id
     private String id;
@@ -15,10 +15,10 @@ public class Device {
     private String deviceInternalPort;
     private String deviceGPIO;
 
-    public Device() {
+    public DeviceHardware() {
     }
 
-    public Device(String id, String devicePhysicalPort, String deviceInternalPort, String deviceGPIO) {
+    public DeviceHardware(String id, String devicePhysicalPort, String deviceInternalPort, String deviceGPIO) {
         this.id = id;
         this.devicePhysicalPort = devicePhysicalPort;
         this.deviceInternalPort = deviceInternalPort;
@@ -59,7 +59,7 @@ public class Device {
 
     @Override
     public String toString() {
-        return "Device{" +
+        return "DeviceHardware{" +
                 "id='" + id + '\'' +
                 ", devicePhysicalPort='" + devicePhysicalPort + '\'' +
                 ", deviceInternalPort='" + deviceInternalPort + '\'' +
