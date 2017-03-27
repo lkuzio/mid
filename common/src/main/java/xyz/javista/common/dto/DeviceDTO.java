@@ -1,15 +1,23 @@
 package xyz.javista.common.dto;
 
 
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by Luke on 2017-03-21.
  */
 
+@Validated
 public class DeviceDTO {
 
     private String id;
+    @NotNull
     private String devicePhysicalPort;
+    @NotNull
     private String deviceInternalPort;
+    @NotNull
     private String deviceGPIO;
     private String deviceName;
     private Long roomId;
@@ -81,7 +89,7 @@ public class DeviceDTO {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + devicePhysicalPort.hashCode();
-        result = 31 * result + deviceInternalPort.hashCode();
+        result = 31 * result + (deviceInternalPort != null ? deviceInternalPort.hashCode() : 0);
         result = 31 * result + deviceGPIO.hashCode();
         result = 31 * result + (deviceName != null ? deviceName.hashCode() : 0);
         result = 31 * result + (roomId != null ? roomId.hashCode() : 0);

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import xyz.javista.common.dto.DeviceDTO;
 import xyz.javista.controlpanel.core.service.DeviceServiceImpl;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ public class DeviceController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void insert(@RequestBody DeviceDTO deviceDTO) {
+    public void insert(@Valid @RequestBody DeviceDTO deviceDTO) {
         deviceService.add(deviceDTO);
     }
 
