@@ -13,4 +13,6 @@ public interface DeviceHardwareService {
     void insert(DeviceDTO deviceDTO);
 
     void delete(String id);
+
+    List<DeviceDTO> findUnassigned();
 }

@@ -34,4 +34,9 @@ public class HardwareDeviceController {
         deviceHardwareService.delete(id);
     }
 
+    @RequestMapping(value="/unassigned", method = RequestMethod.GET)
+    public List<DeviceDTO> findUnassigned(){
+        return deviceHardwareService.findUnassigned();
+    }
+
 }

@@ -21,6 +21,7 @@ public class DeviceDTO {
     private String deviceGPIO;
     private String deviceName;
     private Long roomId;
+    private DeviceType deviceType;
 
     public String getId() {
         return id;
@@ -70,6 +71,14 @@ public class DeviceDTO {
         this.roomId = roomId;
     }
 
+    public DeviceType getDeviceType() {
+        return deviceType;
+    }
+
+    public void setDeviceType(DeviceType deviceType) {
+        this.deviceType = deviceType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -82,17 +91,19 @@ public class DeviceDTO {
         if (!deviceInternalPort.equals(deviceDTO.deviceInternalPort)) return false;
         if (!deviceGPIO.equals(deviceDTO.deviceGPIO)) return false;
         if (deviceName != null ? !deviceName.equals(deviceDTO.deviceName) : deviceDTO.deviceName != null) return false;
-        return roomId != null ? roomId.equals(deviceDTO.roomId) : deviceDTO.roomId == null;
+        if (roomId != null ? !roomId.equals(deviceDTO.roomId) : deviceDTO.roomId != null) return false;
+        return deviceType == deviceDTO.deviceType;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + devicePhysicalPort.hashCode();
-        result = 31 * result + (deviceInternalPort != null ? deviceInternalPort.hashCode() : 0);
+        result = 31 * result + deviceInternalPort.hashCode();
         result = 31 * result + deviceGPIO.hashCode();
         result = 31 * result + (deviceName != null ? deviceName.hashCode() : 0);
         result = 31 * result + (roomId != null ? roomId.hashCode() : 0);
+        result = 31 * result + (deviceType != null ? deviceType.hashCode() : 0);
         return result;
     }
 
@@ -105,6 +116,7 @@ public class DeviceDTO {
                 ", deviceGPIO='" + deviceGPIO + '\'' +
                 ", deviceName='" + deviceName + '\'' +
                 ", roomId=" + roomId +
+                ", deviceType=" + deviceType +
                 '}';
     }
 }

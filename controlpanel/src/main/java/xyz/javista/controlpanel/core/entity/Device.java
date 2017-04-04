@@ -28,6 +28,10 @@ public class Device implements Serializable {
     @Column
     private Long room;
 
+    @Column
+    @Enumerated(EnumType.STRING)
+    private DeviceType deviceType;
+
 
     public Long getId() {
         return id;
@@ -75,5 +79,13 @@ public class Device implements Serializable {
 
     public void setRoom(Long room) {
         this.room = room;
+    }
+
+    public DeviceType getDeviceType() {
+        return deviceType;
+    }
+
+    public void setDeviceType(DeviceType deviceType) {
+        this.deviceType = deviceType;
     }
 }
