@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Luke on 2017-03-21.
  */
-@Mapper(componentModel = "spring", uses = RoomMapper.class)
+@Mapper(componentModel = "spring", uses = {RoomMapper.class, DeviceTypeMapper.class})
 public interface DeviceMapper {
 
     DeviceMapper INSTANCE = Mappers.getMapper(DeviceMapper.class);
