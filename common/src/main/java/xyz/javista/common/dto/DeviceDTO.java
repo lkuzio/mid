@@ -4,6 +4,7 @@ package xyz.javista.common.dto;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 /**
  * Created by Luke on 2017-03-21.
@@ -82,29 +83,20 @@ public class DeviceDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof DeviceDTO)) return false;
         DeviceDTO deviceDTO = (DeviceDTO) o;
-
-        if (id != null ? !id.equals(deviceDTO.id) : deviceDTO.id != null) return false;
-        if (!devicePhysicalPort.equals(deviceDTO.devicePhysicalPort)) return false;
-        if (!deviceInternalPort.equals(deviceDTO.deviceInternalPort)) return false;
-        if (!deviceGPIO.equals(deviceDTO.deviceGPIO)) return false;
-        if (deviceName != null ? !deviceName.equals(deviceDTO.deviceName) : deviceDTO.deviceName != null) return false;
-        if (roomId != null ? !roomId.equals(deviceDTO.roomId) : deviceDTO.roomId != null) return false;
-        return deviceType == deviceDTO.deviceType;
+        return Objects.equals(getId(), deviceDTO.getId()) &&
+                Objects.equals(getDevicePhysicalPort(), deviceDTO.getDevicePhysicalPort()) &&
+                Objects.equals(getDeviceInternalPort(), deviceDTO.getDeviceInternalPort()) &&
+                Objects.equals(getDeviceGPIO(), deviceDTO.getDeviceGPIO()) &&
+                Objects.equals(getDeviceName(), deviceDTO.getDeviceName()) &&
+                Objects.equals(getRoomId(), deviceDTO.getRoomId()) &&
+                getDeviceType() == deviceDTO.getDeviceType();
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + devicePhysicalPort.hashCode();
-        result = 31 * result + deviceInternalPort.hashCode();
-        result = 31 * result + deviceGPIO.hashCode();
-        result = 31 * result + (deviceName != null ? deviceName.hashCode() : 0);
-        result = 31 * result + (roomId != null ? roomId.hashCode() : 0);
-        result = 31 * result + (deviceType != null ? deviceType.hashCode() : 0);
-        return result;
+        return Objects.hash(getId(), getDevicePhysicalPort(), getDeviceInternalPort(), getDeviceGPIO(), getDeviceName(), getRoomId(), getDeviceType());
     }
 
     @Override

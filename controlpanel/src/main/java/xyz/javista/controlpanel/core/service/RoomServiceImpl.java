@@ -33,7 +33,7 @@ public class RoomServiceImpl implements RoomService{
     @Override
     public RoomDTO assignDeviceToRoom(Long id, DeviceDTO deviceDTO) {
         Device device = deviceMapper.toEntity(deviceDTO);
-        device.setRoom(id);
+        device.setRoomId(id);
         deviceRepository.save(device);
         return roomMapper.toDTO(roomRepository.findOne(id));
     }

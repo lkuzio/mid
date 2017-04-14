@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Luke on 2017-04-05.
  */
-@Entity
+@Entity(name = "users")
 public class User {
 
     @Id
@@ -28,7 +28,7 @@ public class User {
     private String email;
 
     @Column
-    private Boolean active;
+    private Boolean enabled;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
@@ -68,12 +68,12 @@ public class User {
         this.email = email;
     }
 
-    public Boolean getActive() {
-        return active;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setActive(Boolean active) {
-        this.active = active;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     public List<Role> getRoles() {

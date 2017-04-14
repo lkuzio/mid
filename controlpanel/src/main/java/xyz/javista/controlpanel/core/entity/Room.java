@@ -6,8 +6,8 @@ import java.util.List;
 /**
  * Created by Luke on 2017-03-25.
  */
-@Entity
-public class Room {
+@Entity(name = "rooms")
+public class Room{
 
     @Id
     @GeneratedValue
@@ -16,7 +16,7 @@ public class Room {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "roomId")
     private List<Device> devices;
 
     public Room() {

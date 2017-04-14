@@ -8,7 +8,7 @@ import javax.persistence.Id;
 /**
  * Created by Luke on 2017-04-05.
  */
-@Entity
+@Entity(name = "roles")
 public class Role {
 
     @Id

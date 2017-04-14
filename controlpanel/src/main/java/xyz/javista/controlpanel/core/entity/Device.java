@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * Created by Luke on 2017-03-20.
  */
-@Entity
+@Entity(name = "devices")
 public class Device implements Serializable {
 
     @Id
@@ -25,8 +25,8 @@ public class Device implements Serializable {
     @Column
     private String deviceName;
 
-    @Column
-    private Long room;
+    @Column(name = "room_id")
+    private Long roomId;
 
     @Column
     @Enumerated(EnumType.STRING)
@@ -73,12 +73,12 @@ public class Device implements Serializable {
         this.deviceName = deviceName;
     }
 
-    public Long getRoom() {
-        return room;
+    public Long getRoomId() {
+        return roomId;
     }
 
-    public void setRoom(Long room) {
-        this.room = room;
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
     }
 
     public DeviceType getDeviceType() {
